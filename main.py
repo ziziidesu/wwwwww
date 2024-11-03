@@ -15,7 +15,6 @@ apis = [
     r"https://invidious.jing.rocks/",
     r"https://invidious.nerdvpn.de/",
     r"https://inv.nadeko.net/",
-    r"https://script.google.com/macros/s/AKfycbzlX6AQh6U90p2XsP9KHsGbP19A25pBU1mNqppdOqXWMkJAr8hzVR0seOKp_WbXL1b4/exec?videoId=",
     r"https://script.google.com/macros/s/AKfycbzVtAOrAl_T_JXC9egQMBkDCmAUqr70AzfLxlU9eR9F3S117h42bytBTMUMc0-jm6Wf/exec?videoId=",
 ]
 url = requests.get(r'https://raw.githubusercontent.com/mochidukiyukimi/yuki-youtube-instance/main/instance.txt').text.rstrip()
