@@ -3,8 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>読み込み中</title>
+    <style>
+      canvas {
+          border: 2px solid black;
+          background-color: transparent;
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          margin: 0;
+          width: 225px;  
+          height: 105px; 
+      }
+</style>
 </head>
 <body>
+    <canvas id="gameCanvas"></canvas>
+    <script src="https://raw.githubusercontent.com/siawaseok3/siawaseok3.github.io/refs/heads/main/shadow/dino-game.js"></script>
     読み込み中です...(これには時間がかかる場合があります)<br>20秒以内にページがリダイレクトされます。
     <script>setTimeout(function(){location.reload();},2000);</script>
 </body>
