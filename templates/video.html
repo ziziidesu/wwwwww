@@ -324,6 +324,21 @@
           const currentViews = viewCountElement.textContent.split("回視聴")[0];
           viewCountElement.textContent = formatViews(currentViews) + "回視聴";
         });
+      
+  document.addEventListener("DOMContentLoaded", function () {
+    // class属性が'related-videos-title'の全ての要素を取得
+    document.querySelectorAll(".related-videos-title").forEach(function (titleElement) {
+      const maxLength = 14; // 最大文字数
+      const originalText = titleElement.textContent; // 元のテキストを取得
+
+      // テキストが最大文字数を超える場合は切り詰めて「…」を追加
+      if (originalText.length > maxLength) {
+        titleElement.textContent = originalText.substring(0, maxLength) + "…";
+      }
+    });
+  });
+
+
     </script>
   </body>
 </html>
