@@ -1,6 +1,11 @@
       .ui-helper-hidden-accessible {
         color: #fff;
       }
+      
+      body {
+            background-color: white;
+        }
+      
       #author-icon {
         width: 28px !important;
         height: 28px !important;
