@@ -15,7 +15,7 @@ apis = [
     r"https://invidious.jing.rocks/",
     r"https://invidious.nerdvpn.de/",
     r"https://inv.nadeko.net/",
-    r"https://script.google.com/macros/s/AKfycbzVtAOrAl_T_JXC9egQMBkDCmAUqr70AzfLxlU9eR9F3S117h42bytBTMUMc0-jm6Wf/exec?videoId=",
+    r"https://script.google.com/macros/s/AKfycbytlpGuby3FkR-S6aOvGqkl-8o3V_lyb5u91VIqhPhhujGVyvqoRJ-fXHPmPOhUQgWI/exec?videoId=",
     r"https://invidious.jing.rocks/",
 r"https://inv.nadeko.net/",
 r"https://invidious.private.coffee/",
