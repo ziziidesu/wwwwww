@@ -114,10 +114,11 @@
         margin-bottom: 15px;
       }
       .thumbnail img {
-        width: 35%;
-        margin-right: 10px;
-        border-radius: 10px;
-      }
+    width: calc(35% + 5px); /* 現在の幅に5pxを追加 */
+    margin-right: 10px;
+    border-radius: 10px;
+}
+
       .thumbnail-text {
         display: flex;
         flex-direction: column;
