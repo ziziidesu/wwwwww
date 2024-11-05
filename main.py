@@ -225,11 +225,11 @@ def apirequest(url):
                 print(f"その他成功したAPI: {api}")  # 成功したAPIをログに出力
                 return res.text
             else:
-                print(f"エラー: {api}")
+                print(f"その他エラー: {api}")
                 apis.append(api)
                 apis.remove(api)
         except:
-            print(f"タイムアウト: {api}")
+            print(f"その他タイムアウト: {api}")
             apis.append(api)
             apis.remove(api)
     raise APItimeoutError("APIがタイムアウトしました")
@@ -247,11 +247,11 @@ def apichannelrequest(url):
                 print(f"チャンネル成功したAPI: {api}")  # 成功したAPIをログに出力
                 return res.text
             else:
-                print(f"エラー: {api}")
+                print(f"チャンネルエラー: {api}")
                 apichannels.append(api)
                 apichannels.remove(api)
         except:
-            print(f"タイムアウト: {api}")
+            print(f"チャンネルタイムアウト: {api}")
             apichannels.append(api)
             apichannels.remove(api)
     raise APItimeoutError("APIがタイムアウトしました")
@@ -269,11 +269,11 @@ def apicommentsrequest(url):
                 print(f"コメント成功したAPI: {api}")  # 成功したAPIをログに出力
                 return res.text
             else:
-                print(f"エラー: {api}")
+                print(f"コメントエラー: {api}")
                 apicomments.append(api)
                 apicomments.remove(api)
         except:
-            print(f"タイムアウト: {api}")
+            print(f"コメントタイムアウト: {api}")
             apicomments.append(api)
             apicomments.remove(api)
     raise APItimeoutError("APIがタイムアウトしました")
