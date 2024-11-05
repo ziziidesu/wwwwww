@@ -15,7 +15,6 @@ apis = [
     r"https://invidious.jing.rocks/",
     r"https://invidious.nerdvpn.de/",
     r"https://inv.nadeko.net/",
-    r"https://script.google.com/macros/s/AKfycbytlpGuby3FkR-S6aOvGqkl-8o3V_lyb5u91VIqhPhhujGVyvqoRJ-fXHPmPOhUQgWI/exec?videoId=",
     r"https://invidious.jing.rocks/",
 r"https://inv.nadeko.net/",
 r"https://invidious.private.coffee/",
@@ -281,9 +280,17 @@ def apicommentsrequest(url):
 
 
 
+# 動画取得用APIリストの作成
+video_apis = [
+    r"https://invidious.jing.rocks/",
+    r"https://invidious.nerdvpn.de/",
+   r"https://script.google.com/macros/s/AKfycbytlpGuby3FkR-S6aOvGqkl-8o3V_lyb5u91VIqhPhhujGVyvqoRJ-fXHPmPOhUQgWI/exec?videoId="
+]
+
+# get_data 関数の変更
 def get_data(videoid):
     global logs
-    t = json.loads(apirequest(r"api/v1/videos/" + urllib.parse.quote(videoid)))
+    t = json.loads(apirequest_video(r"api/v1/videos/" + urllib.parse.quote(videoid)))
 
     # 関連動画を解析してリストにする
     related_videos = [
@@ -308,6 +315,28 @@ def get_data(videoid):
         t["authorThumbnails"][-1]["url"],  # 最後のサムネイルURL
         t["viewCount"]  # 動画の再生回数を追加
     )
+
+# 動画取得用APIリクエスト関数を作成
+def apirequest_video(url):
+    global video_apis
+    starttime = time.time()
+    for api in video_apis:
+        if time.time() - starttime >= max_time - 1:
+            break
+        try:
+            res = requests.get(api + url, timeout=max_api_wait_time)
+            if res.status_code == 200 and is_json(res.text):
+                print(f"動画API成功: {api}")  # 成功したAPIをログに出力
+                return res.text
+            else:
+                print(f"エラー: {api}")
+                video_apis.append(api)
+                video_apis.remove(api)
+        except:
+            print(f"タイムアウト: {api}")
+            video_apis.append(api)
+            video_apis.remove(api)
+    raise APItimeoutError("動画APIがタイムアウトしました")
 
 
 def get_search(q,page):
