@@ -326,23 +326,27 @@
         });
       
     </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-    // class属性が'related-videos-title'の全ての要素を取得
+   <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // クラス属性 'related-videos-title' を持つ全ての要素を取得
     document.querySelectorAll(".related-videos-title").forEach(function (titleElement) {
       const maxLength = 14; // 最大文字数
-      const originalText = titleElement.textContent; // 元のテキストを取得
+      const originalText = titleElement.textContent || ""; // 元のテキストを取得、nullの場合は空文字に
 
-      // テキストが最大文字数を超える場合は切り詰めて「…」を追加
+      // テキストが最大文字数を超える場合のみ切り詰める
       if (originalText.length > maxLength) {
         titleElement.textContent = originalText.substring(0, maxLength) + "…";
       }
+
+      // デバッグ: コンソールに各要素のテキストを出力
+      console.log("Element Text:", titleElement.textContent);
     });
   });
+</script>
 
 
-    </script>
-    </script>
+
+
     
   </body>
 </html>
