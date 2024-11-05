@@ -111,7 +111,7 @@
       .thumbnail {
         display: flex;
         align-items: center;
-        margin-bottom: 15px;
+        margin-bottom: 5px;
       }
       .thumbnail img {
     width: calc(35% + 5px); /* 現在の幅に5pxを追加 */
