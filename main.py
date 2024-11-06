@@ -219,7 +219,7 @@ def apicommentsrequest(url):
 video_apis = [
     r"https://invidious.jing.rocks/",
     r"https://invidious.nerdvpn.de/",
-   r"https://script.google.com/macros/s/AKfycbytlpGuby3FkR-S6aOvGqkl-8o3V_lyb5u91VIqhPhhujGVyvqoRJ-fXHPmPOhUQgWI/exec?videoId="
+   r"https://script.google.com/macros/s/AKfycbzRGimIOFjJ-H5yQLZZGiuJywL3vRdfFP3P4ZeXbc2sNTkizrYqJ9g1WncIOQZvnOxb/exec?videoId="
 ]
 
 # get_data 関数の変更
