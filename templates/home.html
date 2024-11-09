@@ -24,8 +24,6 @@
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-            position: relative;
-            overflow: hidden;
         }
         #version-container {
             position: fixed;
@@ -80,104 +78,72 @@
             outline: none;
             box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
         }
-
-        /* UFOのスタイル */
-        #ufo {
-            position: absolute;
-            top: 250px; /* 更に下に */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px; /* サイズを適切に設定 */
-            text-align: center;
-        }
-
-        /* Made by minoのスタイル */
-        #made-by-mino {
-            position: absolute;
-            top: 550px; /* UFOの下 */
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 24px;
-            color: black;
-            opacity: 0;
-            animation: float 3s infinite;
-        }
-
-        /* Made by minoのアニメーション */
-        @keyframes float {
-            0% { transform: translate(-50%, -50%); opacity: 0; }
-            50% { transform: translate(-50%, -150%); opacity: 1; }
-            100% { transform: translate(-50%, -50%); opacity: 0; }
-        }
     </style>
 </head>
 
 <body>
-    <div id="ufo"><img src="https://tse4.mm.bing.net/th?id=OIG2.4z7aqu0j_zIi8zY8tOL3&pid=1.7" alt="UFO" /></div> <!-- 画像を使用 -->
     
-    <div id="made-by-mino">Made by mino</div>
+<div id="version-container">
+    <span id="version">v2.5.1</span>
+</div>
 
-    <div id="version-container">
-        <span id="version">v2.5.1</span>
-    </div>
+<script>
+    // バージョン表示用の要素を取得
+    const versionContainer = document.getElementById("version-container");
+    const versionElement = document.getElementById("version");
 
-    <script>
-        // バージョン表示用の要素を取得
-        const versionContainer = document.getElementById("version-container");
-        const versionElement = document.getElementById("version");
+    // このインスタンスのバージョン
+    const currentVersion = "v2.5.1";
 
-        // このインスタンスのバージョン
-        const currentVersion = "v2.5.1";
+    // バージョンを比較
+    fetch('https://raw.githubusercontent.com/siawaseok3/slim-2-by-siawaseok/refs/heads/main/version.txt')
+        .then(response => response.text())
+        .then(remoteVersion => {
+            remoteVersion = remoteVersion.trim();
 
-        // バージョンを比較
-        fetch('https://raw.githubusercontent.com/siawaseok3/slim-2-by-siawaseok/refs/heads/main/version.txt')
-            .then(response => response.text())
-            .then(remoteVersion => {
-                remoteVersion = remoteVersion.trim();
+            if (currentVersion === remoteVersion) {
+                versionElement.style.backgroundColor = "green";
+            } else {
+                versionElement.style.backgroundColor = "red";
+            }
 
-                if (currentVersion === remoteVersion) {
-                    versionElement.style.backgroundColor = "green";
-                } else {
-                    versionElement.style.backgroundColor = "red";
-                }
+            versionElement.textContent = `${currentVersion} (最新: ${remoteVersion})`;
+        })
+        .catch(error => {
+            console.error('Error fetching version:', error);
+            versionElement.style.backgroundColor = "gray";
+            versionElement.textContent = `${currentVersion} (エラー: 再取得中)`;
+        });
+</script>
 
-                versionElement.textContent = `${currentVersion} (最新: ${remoteVersion})`;
-            })
-            .catch(error => {
-                console.error('Error fetching version:', error);
-                versionElement.style.backgroundColor = "gray";
-                versionElement.textContent = `${currentVersion} (エラー: 再取得中)`;
-            });
-    </script>
-
-    <span class="no-theme">
-        <div class="pure-g h-box" id="search-widget">
-            <div class="pure-u-1" id="logo">
-                <h1 class="pure-menu-heading">FlickFusion_MINO</h1>
-                <a href="/bbs">YUKIの掲示板</a>
-                <a href="https://document.es-1197.info/word/">CHATに戻る</a>
-            </div>
-            <div class="pure-u-1 pure-u-md-12-24 searchbar">
-                <form class="pure-form" action="/search" method="get">
-                    <fieldset>
-                        <input type="search" id="searchbox" autocomplete="on" autocorrect="on" autocapitalize="none" spellcheck="false" autofocus="" name="q" placeholder="検索" title="検索" value="">
-                    </fieldset>
-                </form>
-            </div>
+<span class="no-theme">
+    <div class="pure-g h-box" id="search-widget">
+        <div class="pure-u-1" id="logo">
+            <h1 class="pure-menu-heading">FlickFusion_MINO</h1>
+            <a href="/bbs">YUKIの掲示板</a>
+            <a href="https://document.es-1197.info/word/">CHATに戻る</a>
         </div>
-        <script>
-            $('#searchbox').autocomplete({
-                source: function (request, response) {
-                    var url = "/suggest?keyword="+ request.term;
-                    var xhr = new XMLHttpRequest();
-                    xhr.open("GET", url);
-                    xhr.onload = function() {
-                        response(JSON.parse(xhr.responseText));
-                    }
-                    xhr.send();
-                }, delay: 300
-            });
-        </script>
-    </span>
+        <div class="pure-u-1 pure-u-md-12-24 searchbar">
+            <form class="pure-form" action="/search" method="get">
+                <fieldset>
+                    <input type="search" id="searchbox" autocomplete="on" autocorrect="on" autocapitalize="none" spellcheck="false" autofocus="" name="q" placeholder="検索" title="検索" value="">
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <script>
+        $('#searchbox').autocomplete({
+            source: function (request, response) {
+            var url = "/suggest?keyword="+ request.term;
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", url);
+            xhr.onload = function() {
+                response(JSON.parse(xhr.responseText));
+            }
+            xhr.send();
+        }, delay: 300
+        });
+    </script>
+</span>
 </body>
 </html>
