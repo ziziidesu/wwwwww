@@ -68,11 +68,13 @@
             text-decoration: underline;
         }
         .pure-form input[type="search"] {
-            width: 80%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
+            width: 100%; /* 幅を100%に設定 */
+            max-width: 600px; /* 最大幅を設定 */
+            padding: 20px; /* パディングを大きくする */
+            border: 2px solid #ddd;
+            border-radius: 25px; /* 丸みを付ける */
+            font-size: 18px; /* 文字サイズを変更 */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
         .pure-form input[type="search"]:focus {
             border-color: #007BFF;
