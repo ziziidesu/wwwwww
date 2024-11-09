@@ -24,6 +24,10 @@
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
         #version-container {
             position: fixed;
@@ -45,9 +49,9 @@
             margin: 10px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
         #logo {
-            text-align: center;
             margin-bottom: 20px;
         }
         #logo h1 {
@@ -62,9 +66,6 @@
         }
         a:hover {
             text-decoration: underline;
-        }
-        .searchbar {
-            text-align: center;
         }
         .pure-form input[type="search"] {
             width: 80%;
@@ -88,14 +89,10 @@
 </div>
 
 <script>
-    // バージョン表示用の要素を取得
     const versionContainer = document.getElementById("version-container");
     const versionElement = document.getElementById("version");
-
-    // このインスタンスのバージョン
     const currentVersion = "v2.5.1";
 
-    // バージョンを比較
     fetch('https://raw.githubusercontent.com/siawaseok3/slim-2-by-siawaseok/refs/heads/main/version.txt')
         .then(response => response.text())
         .then(remoteVersion => {
@@ -126,7 +123,7 @@
         <div class="pure-u-1 pure-u-md-12-24 searchbar">
             <form class="pure-form" action="/search" method="get">
                 <fieldset>
-                    <input type="search" id="searchbox" autocomplete="on" autocorrect="on" autocapitalize="none" spellcheck="false" autofocus="" name="q" placeholder="検索" title="検索" value="">
+                    <input type="search" id="searchbox" autocomplete="on" autocorrect="on" autocapitalize="none" spellcheck="false" autofocus name="q" placeholder="検索" title="検索" value="">
                 </fieldset>
             </form>
         </div>
@@ -134,14 +131,15 @@
     <script>
         $('#searchbox').autocomplete({
             source: function (request, response) {
-            var url = "/suggest?keyword="+ request.term;
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", url);
-            xhr.onload = function() {
-                response(JSON.parse(xhr.responseText));
-            }
-            xhr.send();
-        }, delay: 300
+                var url = "/suggest?keyword="+ request.term;
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", url);
+                xhr.onload = function() {
+                    response(JSON.parse(xhr.responseText));
+                }
+                xhr.send();
+            }, 
+            delay: 300
         });
     </script>
 </span>
