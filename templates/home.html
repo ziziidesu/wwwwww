@@ -18,7 +18,69 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        #version-container {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 8px 12px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        #version {
+            padding: 4px;
+            color: white;
+            border-radius: 4px;
+        }
+        #search-widget {
+            background-color: white;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #logo h1 {
+            font-size: 24px;
+            color: #333;
+            margin: 0;
+        }
+        a {
+            color: #007BFF;
+            text-decoration: none;
+            margin-right: 15px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .searchbar {
+            text-align: center;
+        }
+        .pure-form input[type="search"] {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .pure-form input[type="search"]:focus {
+            border-color: #007BFF;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+    </style>
 </head>
+
 <body>
     
 <div id="version-container">
@@ -29,15 +91,6 @@
     // バージョン表示用の要素を取得
     const versionContainer = document.getElementById("version-container");
     const versionElement = document.getElementById("version");
-
-    // CSSスタイルを適用
-    versionContainer.style.position = "fixed";
-    versionContainer.style.top = "9px";
-    versionContainer.style.right = "9px";
-    versionContainer.style.padding = "4px";
-
-    versionElement.style.padding = "4px";
-    versionElement.style.color = "white";
 
     // このインスタンスのバージョン
     const currentVersion = "v2.5.1";
@@ -62,35 +115,35 @@
             versionElement.textContent = `${currentVersion} (エラー: 再取得中)`;
         });
 </script>
-    <span class="no-theme">
-        <div class="pure-g h-box" id="search-widget">
-            <div class="pure-u-1" id="logo">
-                <h1 href="/" class="pure-menu-heading">FlickFusion_MINO</h1>
-            <a href="/bbs">YUKIの掲示板</a><br>
+
+<span class="no-theme">
+    <div class="pure-g h-box" id="search-widget">
+        <div class="pure-u-1" id="logo">
+            <h1 class="pure-menu-heading">FlickFusion_MINO</h1>
+            <a href="/bbs">YUKIの掲示板</a>
             <a href="https://document.es-1197.info/word/">CHATに戻る</a>
-            </div>
-            <div class="pure-u-1-4"></div>
-            <div class="pure-u-1 pure-u-md-12-24 searchbar">
-                <form class="pure-form" action="/search" method="get">
-                    <fieldset>
-                        <input type="search" id="searchbox" autocomplete="on" autocorrect="on" autocapitalize="none" spellcheck="false" autofocus="" name="q" placeholder="検索" title="検索" value="">
-                    </fieldset>
-                </form>
-            </div>
-            <div class="pure-u-1-4"></div>
-            
         </div>
-        <script>$('#searchbox').autocomplete({
+        <div class="pure-u-1 pure-u-md-12-24 searchbar">
+            <form class="pure-form" action="/search" method="get">
+                <fieldset>
+                    <input type="search" id="searchbox" autocomplete="on" autocorrect="on" autocapitalize="none" spellcheck="false" autofocus="" name="q" placeholder="検索" title="検索" value="">
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <script>
+        $('#searchbox').autocomplete({
             source: function (request, response) {
-                {
-            var url = "/suggest?keyword="+ request.term
+            var url = "/suggest?keyword="+ request.term;
             var xhr = new XMLHttpRequest();
             xhr.open("GET", url);
             xhr.onload = function() {
                 response(JSON.parse(xhr.responseText));
             }
             xhr.send();
-        }},delay:300});</script>
-    </span>
+        }, delay: 300
+        });
+    </script>
+</span>
 </body>
 </html>
