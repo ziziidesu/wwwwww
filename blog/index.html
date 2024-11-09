@@ -371,6 +371,13 @@
                 }
             };
 
+            // ここから、新しいリダイレクトのロジックを追加します
+            const redirectToSiteWithoutWord = (word) => {
+                const currentUrl = window.location.href;
+                const newUrl = currentUrl.replace(/\/word\//, '/');
+                window.location.href = newUrl; // 新しいURLへリダイレクト
+            };
+
             // フォローボタンのクリックリスナー
             document.getElementById('followButton').onclick = async function () {
                 await updateTrustScore(userId, 1); // フォローするとスコア追加
@@ -382,6 +389,15 @@
                 if (userData.followers.length === 9) { // 9人目のフォロワー
                     await awardBadge(userId, "10人フォロワー");
                 }
+
+                // 新しいリダイレクト処理を呼び出す
+                redirectToSiteWithoutWord();
+            };
+
+            // proxyButtonのクリックリスナー
+            document.getElementById('proxyButton').onclick = function () {
+                // 新しいリダイレクト処理を呼び出す
+                redirectToSiteWithoutWord();
             };
 
             // about:blankボタンのクリックリスナー
@@ -779,23 +795,8 @@
 
             // プロキシを起動ボタンのクリックリスナー
             document.getElementById('proxyButton').onclick = function () {
-                const overlay = document.createElement('div');
-                overlay.classList.add('popup-overlay');
-                overlay.innerHTML = `
-                    <div class="fullscreen-overlay">
-                        <button class="close-button">✖</button>
-                        <div class="iframe-container">
-                            <iframe src="https://neon.go4it.com.mx" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                `;
-                document.body.appendChild(overlay);
-                overlay.style.display = 'flex';
-
-                overlay.querySelector('.close-button').onclick = function () {
-                    overlay.style.display = 'none';
-                    document.body.removeChild(overlay);
-                };
+                // 新しいリダイレクト処理を呼び出す
+                redirectToSiteWithoutWord();
             };
         });
     </script>
@@ -832,8 +833,5 @@
             </div>
         </div>
     </div>
-</body>
-</html>
-    <script src="script.js"></script>
 </body>
 </html>
