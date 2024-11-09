@@ -21,12 +21,9 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url('https://tse4.mm.bing.net/th?id=OIG4.pdKR26vFscNOUcwmV6Hj&pid=ImgGn'); /* 背景画像を追加 */
-            background-size: cover; /* 背景画像を全体にカバー */
-            background-position: center; /* 背景画像の位置を中央に */
+            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-            color: #333; /* テキストの色を調整 */
         }
         #version-container {
             position: fixed;
@@ -43,12 +40,11 @@
             border-radius: 4px;
         }
         #search-widget {
-            background-color: rgba(255, 255, 255, 0.9); /* 背景を薄くして目立たせる */
+            background-color: white;
             padding: 20px;
             margin: 10px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center; /* 中央に揃える */
         }
         #logo {
             text-align: center;
@@ -82,20 +78,11 @@
             outline: none;
             box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
         }
-        #image-container {
-            margin-top: 20px; /* 画像と検索バーの間にマージンを追加 */
-            text-align: center; /* 画像を中央に揃える */
-        }
-        #bottom-image {
-            max-width: 100%; /* 画像の幅を100%に設定 */
-            height: auto; /* 高さを自動に設定 */
-            display: inline-block; /* インラインブロックで中央揃えに対応 */
-        }
     </style>
 </head>
 
 <body>
-
+    
 <div id="version-container">
     <span id="version">v2.5.1</span>
 </div>
@@ -143,21 +130,18 @@
                 </fieldset>
             </form>
         </div>
-        
-        </div>
     </div>
-
     <script>
         $('#searchbox').autocomplete({
             source: function (request, response) {
-                var url = "/suggest?keyword="+ request.term;
-                var xhr = new XMLHttpRequest();
-                xhr.open("GET", url);
-                xhr.onload = function() {
-                    response(JSON.parse(xhr.responseText));
-                }
-                xhr.send();
-            }, delay: 300
+            var url = "/suggest?keyword="+ request.term;
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", url);
+            xhr.onload = function() {
+                response(JSON.parse(xhr.responseText));
+            }
+            xhr.send();
+        }, delay: 300
         });
     </script>
 </span>
