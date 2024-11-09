@@ -78,14 +78,25 @@
             outline: none;
             box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
         }
+        /* UFO canvas style */
+        #ufo-canvas {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px; /* UFOのサイズ */
+            height: 100px; /* UFOのサイズ */
+        }
     </style>
 </head>
 
 <body>
-    
+
 <div id="version-container">
     <span id="version">v2.5.1</span>
 </div>
+
+<canvas id="ufo-canvas"></canvas>
 
 <script>
     // バージョン表示用の要素を取得
@@ -114,6 +125,33 @@
             versionElement.style.backgroundColor = "gray";
             versionElement.textContent = `${currentVersion} (エラー: 再取得中)`;
         });
+
+    // UFOと放射物を描く
+    const canvas = document.getElementById('ufo-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = 200; // Canvasの幅
+    canvas.height = 200; // Canvasの高さ
+
+    function drawUFO() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // 画面をクリア
+        ctx.font = '100px serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('🛸', canvas.width / 2, canvas.height / 2 - 20); // UFOを描く
+        
+        // 放射物の設定
+        ctx.fillStyle = 'white';
+        ctx.beginPath();
+        ctx.moveTo(canvas.width / 2 - 10, canvas.height / 2 + 20); // UFOの下から放射物を描く
+        ctx.lineTo(canvas.width / 2 + 10, canvas.height / 2 + 20);
+        ctx.lineTo(canvas.width / 2 + 5, canvas.height);
+        ctx.lineTo(canvas.width / 2 - 5, canvas.height);
+        ctx.closePath();
+        ctx.fill();
+    }
+
+    // 描画ループ
+    setInterval(drawUFO, 1000 / 60); // 60 FPS
 </script>
 
 <span class="no-theme">
@@ -134,14 +172,14 @@
     <script>
         $('#searchbox').autocomplete({
             source: function (request, response) {
-            var url = "/suggest?keyword="+ request.term;
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", url);
-            xhr.onload = function() {
-                response(JSON.parse(xhr.responseText));
-            }
-            xhr.send();
-        }, delay: 300
+                var url = "/suggest?keyword=" + request.term;
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", url);
+                xhr.onload = function () {
+                    response(JSON.parse(xhr.responseText));
+                }
+                xhr.send();
+            }, delay: 300
         });
     </script>
 </span>
