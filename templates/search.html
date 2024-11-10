@@ -19,12 +19,35 @@
             background-color: #f9f9f9;
             margin: 0;
             padding: 0;
+            display: flex; /* 横並びに配置 */
         }
         #header {
             background-color: #ff0000;
             padding: 10px 20px;
             color: white;
             text-align: center;
+            width: 100%;
+            position: sticky; /* スクロール時に固定 */
+            top: 0;
+            z-index: 10; /* その他のコンテンツの上に表示 */
+        }
+        #sidebar {
+            width: 250px; /* サイドバーの幅 */
+            background-color: #222; /* 背景色 */
+            color: white;
+            padding: 10px;
+            height: 100vh; /* 高さを画面全体にする */
+            position: sticky; /* スクロール時に固定 */
+            top: 0;
+        }
+        #sidebar a {
+            color: white; /* テキスト色 */
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+        }
+        #sidebar a:hover {
+            background-color: #444; /* ホバー時の背景色 */
         }
         .searchbar {
             display: flex;
@@ -47,6 +70,7 @@
         .pure-g {
             max-width: 1200px;
             margin: 0 auto;
+            flex: 1; /* コンテンツエリアを横幅いっぱいに広げる */
         }
         .video-card {
             background-color: white;
@@ -107,6 +131,31 @@
 <body>
     <div id="header">
         <h1>YOUTUBE client made by mino-hobby</h1>
+    </div>
+    <div id="sidebar">
+        <a href="/">ホーム</a>
+        <a href="/shorts">ショート</a>
+        <a href="/subscriptions">購読</a>
+        <a href="/history">履歴</a>
+        <a href="/playlists">プレイリスト</a>
+        <a href="/watch-later">後で見る</a>
+        <a href="/liked-videos">いいねした動画</a>
+        <a href="/explore">エクスプローラー</a>
+        <a href="/trending">トレンド</a>
+        <a href="/music">音楽</a>
+        <a href="/movies-tv">映画 & テレビ</a>
+        <a href="/live">ライブ</a>
+        <a href="/gaming">ゲーム</a>
+        <a href="/news">ニュース</a>
+        <a href="/sports">スポーツ</a>
+        <a href="/courses">コース</a>
+        <a href="/youtube-premium">YouTubeプレミアム</a>
+        <a href="/youtube-music">YouTubeミュージック</a>
+        <a href="/youtube-kids">YouTube Kids</a>
+        <a href="/settings">設定</a>
+        <a href="/help">ヘルプ</a>
+        <a href="/feedback">フィードバックを送信</a>
+        <a href="/about">About</a>
     </div>
     <div class="searchbar">
         <form class="pure-form" action="/search" method="get">
