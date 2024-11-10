@@ -30,19 +30,19 @@
             display: flex;
             justify-content: center;
             padding: 10px;
-            background-color: #333; /* 背景色を黒っぽい灰色に変更 */
+            background-color: #333; /* 背景を黒っぽい灰色に */
         }
         .searchbar input[type="search"] {
-            width: 80%; /* 横長にするための幅を調整 */
-            padding: 15px; /* 余白を調整 */
+            width: 80%; /* 横長に調整 */
+            padding: 15px; /* パディングを広げて見やすく */
             border-radius: 2px;
             border: none;
             font-size: 16px;
-            color: #fff; /* テキスト色を白に変更 */
-            background-color: #444; /* 検索ボックスの背景色を灰色に変更 */
+            color: #fff; /* テキスト色を白に */
+            background-color: #666; /* 入力フィールドの背景色を暗く */
         }
         .searchbar input[type="search"]::placeholder {
-            color: #bbb; /* プレースホルダーの色を変更 */
+            color: #bbb; /* プレースホルダの色を明るく */
         }
         .pure-g {
             max-width: 1200px;
@@ -54,15 +54,30 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
             transition: transform 0.2s;
-            display: flex; /* 横長にするためのFlexboxを追加 */
+            display: flex; /* 横長にするためにフレックスボックスを利用 */
+            flex-direction: row; /* 横方向に配置 */
         }
         .video-card:hover {
             transform: scale(1.05);
         }
+        .thumbnail {
+            flex: 0 0 150px; /* サムネイルのサイズを調整 */
+            position: relative; /* 長さの表示のためにポジションを調整 */
+        }
         .thumbnail img {
-            width: 200px; /* サムネイルの幅を調整 */
+            width: 100%;
             border-top-left-radius: 5px;
-            border-bottom-left-radius: 5px; /* 左側の角を丸める */
+            border-top-right-radius: 5px;
+        }
+        .length {
+            position: absolute;
+            bottom: 5px;
+            left: 5px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-size: 12px;
         }
         .video-data {
             font-size: 12px;
@@ -72,7 +87,11 @@
             display: flex;
             justify-content: space-between;
             padding: 10px;
-            flex-grow: 1; /* 残りのスペースを占有する */
+            flex-grow: 1; /* ビデオデータの領域を広げる */
+        }
+        .video-title {
+            font-size: 14px; /* タイトルのフォントサイズを調整 */
+            margin: 5px 0;
         }
         .pagination {
             text-align: right;
@@ -108,10 +127,12 @@
                         <a href="/watch?v={{ result['id'] }}">
                             <img loading="lazy" src="{% if proxy == "True" %}/thumbnail?v={{ result['id'] }}{% else %}https://img.youtube.com/vi/{{ result['id'] }}/0.jpg{% endif %}" onerror="document.cookie = 'proxy=True;max-age=2592000;';">
                             <p class="length">{{result["length"]}}</p>
-                            <p dir="auto">{{ result['title'] }}</p>
                         </a>
                         <div class="flexible">
-                            <a class="video-data" href="/channel/{{result['authorId']}}">{{result["author"]}}</a>
+                            <div>
+                                <p class="video-title" dir="auto">{{ result['title'] }}</p>
+                                <a class="video-data" href="/channel/{{result['authorId']}}">{{result["author"]}}</a>
+                            </div>
                             <p class="video-data">{{result["published"]}}</p>
                         </div>
                         {% elif result["type"] == "channel" %}
