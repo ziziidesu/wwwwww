@@ -2,7 +2,7 @@
 
 ## 概要
 
-FlickFusion-現在最速のinvidious&YUKIYOUTUBEのMOD:約2秒で動画を読み込み　より洗練された最高のYouTubeクライアント
+FlickFusion-現在最速のinvidious&YUKIYOUTUBEのMOD:約2秒で動画を読み込み　より洗練された最高のYouTubeクライアント　　　　　　
 FlickFusionは、YouTubeを快適に楽しむための最高のWebクライアントです。このアプリケーションは、シンプルで直感的なインターフェースを持ちながら、高度な機能を提供し、ユーザーが求める動画コンテンツを簡単に見つけて視聴することができます。FlickFusionは、個々のユーザーの好みに応じたカスタマイズ機能や、動画の管理、プレイリストの作成、友達との共有機能などを提供します。
 
 ## 目次
