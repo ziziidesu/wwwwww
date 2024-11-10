@@ -87,12 +87,14 @@
         }
         /* ビデオカードのサイズ調整 */
         .video-card {
-            width: calc(25% - 20px); /* 黄金比に近づける */
+            width: calc(30% - 20px); /* 黄金比に近づけるために横長に設定 */
+            height: calc(30%); /* 高さも適宜調整 */
+            aspect-ratio: 1.618 / 1; /* 黄金比に基づくアスペクト比を設定 */
             margin: 10px;
         }
         @media (max-width: 768px) {
             .video-card {
-                width: calc(50% - 20px); /* スマホ対応 */
+                width: calc(45% - 20px); /* 中程度のデバイス対応 */
             }
         }
         @media (max-width: 480px) {
@@ -117,7 +119,7 @@
         <div class="pure-u-1" id="contents">
             <div class="pure-g">
                 {% for result in results %}
-                <div class="pure-u-1 pure-u-md-1-4 video-card">
+                <div class="pure-u-1 pure-u-md-1-3 video-card"> <!-- 変更部分 -->
                     <div class="thumbnail">
                         {% if result["type"] == "video" %}
                         <a href="/watch?v={{ result['id'] }}">
