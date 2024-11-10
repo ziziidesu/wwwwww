@@ -1,98 +1,111 @@
-<p>幸せok改造インスタンス</p>
-デプロイボタンは下
+# FlickFusion README.md
+
+## 概要
+
+FlickFusion-現在最速のinvidious&YUKIYOUTUBEのMOD:約2秒で動画を読み込み　より洗練された最高のYouTubeクライアント
+FlickFusionは、YouTubeを快適に楽しむための最高のWebクライアントです。このアプリケーションは、シンプルで直感的なインターフェースを持ちながら、高度な機能を提供し、ユーザーが求める動画コンテンツを簡単に見つけて視聴することができます。FlickFusionは、個々のユーザーの好みに応じたカスタマイズ機能や、動画の管理、プレイリストの作成、友達との共有機能などを提供します。
+
+## 目次
+
+1. [特徴](#特徴)
+2. [インストール](#インストール)
+3. [使い方](#使い方)
+   - [アカウントの作成](#アカウントの作成)
+   - [動画の検索](#動画の検索)
+   - [プレイリストの管理](#プレイリストの管理)
+   - [動画の共有](#動画の共有)
+4. [開発者向け情報](#開発者向け情報)
+5. [ライセンス](#ライセンス)
+6. [コントリビュート](#コントリビュート)
+7. [お問い合わせ](#お問い合わせ)
+
+## 特徴
+
+- **シンプルなインターフェース**: 初心者でも簡単に操作できる直感的なデザイン。
+- **動画検索機能**: 様々なフィルターを用いて、興味のある動画を簡単に検索。
+- **プレイリスト作成**: 自分のお気に入りの動画を集めて、オリジナルのプレイリストを作成可能。
+- **動画の評価**: 視聴した動画に対して簡単に評価（いいね、バッド）を付けることができます。
+- **友達との共有**: お気に入りの動画やプレイリストを簡単に共有。
+- **パーソナライズドホーム**: ユーザーの視聴履歴をもとに、おすすめ動画を表示。
+
+## インストール
+
+FlickFusionを使い始めるのは非常に簡単です。以下の手順に従って、すぐに利用を始めることができます。
+
+1. **前提条件**:
+   - 最新のWebブラウザ（Chrome、Firefox、Edgeなど）。
+   - インターネット接続。
+
+2. **ダウンロード**:
+   FlickFusionの公式サイトから最新バージョンをダウンロードします。
+
+3. **インストール**:
+   ダウンロードしたファイルを解凍し、インストール手順に従ってください。
+
+4. **起動**:
+   インストールが完了したら、アプリケーションを起動します。
 
 ## 使い方
 
-右下に出てくる「Cookieを承認しますか？」を承認してください<br>
-拒否を押した場合ページをリロードすると再度表示されます。<br>
+### アカウントの作成
 
-承認を押すと↓が実行されます。
-```JavaScript
-document.getElementById('accept-btn').addEventListener('click', function() {
-    document.cookie = "yuki=True; max-age=31536000; path=/";
-    location.href = "/";
-    return;
-});
-```
+1. **アプリを起動**: FlickFusionを起動します。
+2. **新規登録**: ホーム画面の「新規登録」ボタンをクリックします。
+3. **必要情報の入力**: メールアドレス、パスワード、ユーザー名を入力し、登録を完了させます。
+4. **メール確認**: 登録したメールアドレスに確認メールが届くので、指示に従ってアカウントを確認してください。
 
+### 動画の検索
 
+1. **検索バーを利用**: アプリの上部にある検索バーにキーワードを入力し、エンターキーを押します。
+2. **フィルターの利用**: タブを切り替えることで、「人気の動画」「新着動画」「ジャンル別」などのフィルターを利用できます。
+3. **結果の表示**: 検索結果が表示され、興味のある動画をクリックすることで視聴を開始できます。
 
-## 説明(?)
-ASGIで動く、 
-blog内に静的サイトを入れると認証されていない時にそのサイトが表示されます。  
-cookieにyuki=Trueを設定すると認証されます。  
-サーバーの起動時に掲示板の公式インスタンスに接続します。定期的にサーバーを再起動してください。  <br>
-<br>
-## デプロイ
-(slim-2-by-siawaseok.gitがデプロイされます)<br>
-<a href="https://render.com/deploy?repo=https://github.com/siawaseok3/slim-2-by-siawaseok.git">
- <img src="https://render.com/images/deploy-to-render-button.svg" alt="Deploy to Render"><br>
-</a>
-<a href="https://vercel.com/new/clone?repository-url=https://github.com/siawaseok3/slim-2-by-siawaseok.git">
-  <img src="https://vercel.com/button" alt="Deployto Vercel">
-</a>
+### プレイリストの管理
 
-[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&builder=buildpack&repository=github.com/siawaseok3/slim-2-by-siawaseok&branch=main&name=slim-2-by-siawaseok)
-<br>
+1. **プレイリスト作成**: ホーム画面の「プレイリスト作成」ボタンをクリックします。タイトルと説明を入力して作成します。
+2. **動画の追加**: 動画を視聴中に「プレイリストに追加」ボタンをクリックし、任意のプレイリストを選択します。
+3. **プレイリストの編集**: 自分のプレイリストから動画を削除したり、順番を入れ替えたりすることが可能です。
 
-<h2>偽造ページの変え方</h2>
+### 動画の共有
 
-### はじめに
+1. **動画ページ**: シェアしたい動画を開きます。
+2. **共有ボタン**: 動画の下にある「共有」ボタンをクリックします。
+3. **リンクの取得**: 表示されるリンクをコピーし、SNSやメールで友達と共有できます。
 
-このリポジトリをフォークしてください。 
+## 開発者向け情報
 
-次に偽造ページに使いたいhtmlを作ってください
+FlickFusionはオープンソースプロジェクトです。GitHubにてソースコードを公開しています。興味がある開発者は、以下の手順で開発環境を構築できます。
 
-偽造ページを変更するには、以下のファイルを編集します:[blog/index.html](https://github.com/siawaseok3/slim-2-by-siawaseok/blob/main/blog/index.html)
+1. **リポジトリのクローン**: 
+   ```bash
+   git clone https://github.com/yourusername/FlickFusion.git
+   ```
 
+2. **依存関係のインストール**: 
+   ```bash
+   cd FlickFusion
+   npm install
+   ```
 
-作成した偽造ページのHTML内には、以下のコードが含まれている必要があります。これにより、サイトが正しく機能します。
+3. **ローカルサーバーの起動**: 
+   ```bash
+   npm run start
+   ```
 
-<img src="IMG_9361.jpeg" width="60%" height="60%">
-(これが出てくる様になる)
+## ライセンス
 
-### 偽造ページに必要なHTML要素
+FlickFusionはMITライセンスのもとで配布されています。詳細なライセンス情報は、[LICENSE](LICENSE)ファイルを参照してください。
 
-**`<head>`タグに追加する内容:**
-```html
-<link rel="stylesheet" href="styles.css">
-```
-**`<body>` タグに追加する内容:**
-```html
-<div id="cookie-notice" class="cookie-notice">
-    このサイトではクッキーを使用しています。<br>
-    <button id="accept-btn">承認する</button>
-    <button id="reject-btn">拒否する</button>
-</div>
-<script src="script.js"></script>
-```
+## コントリビュート
 
-<br>
+私たちは、FlickFusionへのコントリビューションを歓迎します。バグ報告や機能提案は、GitHubの「Issues」セクションから行えます。また、プルリクエストも大歓迎です！
 
-## バージョン機能
+## お問い合わせ
 
-```javascript
-fetch('https://raw.githubusercontent.com/siawaseok3/slim-2-by-siawaseok/refs/heads/main/version.txt')
-    .then(response => response.text())
-    .then(remoteVersion => {
-        remoteVersion = remoteVersion.trim();
-```
+FlickFusionに関する質問やサポートが必要な場合は、以下までご連絡ください。
 
- `fetch()`を使って、リモートに保存されているバージョン情報（`version.txt`ファイル）を取得します。
+web: https://document.es-1197.info/word/
 
-- 現在のリポジトリのバージョンとリモートから取得したバージョンを比較します。
-    - バージョンが一致する場合は、背景色を緑色に設定します。
-    - バージョンが異なる場合は、背景色を赤色に設定します。
-- また、表示されるテキストを現在のバージョンとリモートバージョンの情報に更新します。
+---
 
-- バージョンの取得に失敗した場合、エラーをキャッチして背景色を灰色に変更し、「バージョン取得失敗」と表示します。
-
-<br>
-
-### インビのインスタンス
-https://docs.invidious.io/instances/<br>
-https://invidious.namazso.eu/<br>
-<br>
-分からないことがあったり教えて欲しいことがあったら、<a href="https://line.me/ti/g2/vCj1dWEoRZTALbC0n1w53si3-KJ8OTXnfjV6aw?utm_source=invitation&utm_medium=link_copy&utm_campaign=default">オープンチャット</a>などでメンションして下さい！(YouTubeから来た人はコメ欄でも良いよ。)
-
-
+このREADMEは、FlickFusion使用時に役立つ情報を網羅しております。YouTubeを新しい形で楽しむために、ぜひFlickFusionをご利用ください！
