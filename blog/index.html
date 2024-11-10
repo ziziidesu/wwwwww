@@ -1,5 +1,52 @@
 <!DOCTYPE html>
 <html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlickFusion</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f1f1f1;
+        }
+        h1 {
+            font-size: 2.5rem;
+        }
+        input[type="text"] {
+            width: 60%;
+            padding: 10px;
+            font-size: 1.5rem;
+            margin-top: 20px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>FlickFusion</h1>
+    <input type="text" id="searchInput" placeholder="検索したい言葉を入力..." onkeypress="handleKeyPress(event)">
+
+    <script>
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                const query = document.getElementById('searchInput').value;
+                if (query) {
+                    // ホストURLを取得
+                    const host = window.location.origin;
+                    // 新しいURLにリダイレクト
+                    window.location.href = `${host}/search?q=${encodeURIComponent(query)}`;
+                }
+            }
+        }
+    </script>
+
+</body>
     <head>
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/siawaseok3/yuki-bbs-siawaseok/main/views/IMG_9455-modified.png">
     <link rel="shortcut icon" href="https://raw.githubusercontent.com/siawaseok3/yuki-bbs-siawaseok/main/views/IMG_9455-modified.png" type="image/png">
@@ -13,9 +60,9 @@
 
     <!-- Cookieの承認 -->
     <div id="cookie-notice" class="cookie-notice">
-        最新のYUKIインスタンスにとぶ。<br>
-        <button id="accept-btn">OK（YUKIにとぶ）</button>
-        <button id="reject-btn">NO（チャットにとどまる）</button>
+        さらに洗練されたインスタンスにとぶ。<br>
+        <button id="accept-btn">OK(v1.1.0)</button>
+        <button id="reject-btn">NO(v1.0.0)</button>
     </div>
     <script src="script.js"></script>
 </body>
