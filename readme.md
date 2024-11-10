@@ -1,5 +1,11 @@
 # FlickFusion README.md
 
+## Deploy FlickFusion
+
+[![Deploy on Koyeb](https://www.koyeb.com/deploy/button.svg)](https://app.koyeb.com/deploy?repository=https://github.com/yourusername/FlickFusion)  
+[![Deploy on Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/yourusername/FlickFusion)  
+[![Deploy on Render](https://render.com/buttons/deploy-to-render.svg)](https://render.com/deploy?repo=https://github.com/yourusername/FlickFusion)
+
 ## 概要
 
 FlickFusion-現在最速のinvidious&YUKIYOUTUBEのMOD:約2秒で動画を読み込み　より洗練された最高のYouTubeクライアント　　　　　　
@@ -79,33 +85,26 @@ FlickFusionはオープンソースプロジェクトです。GitHubにてソー
 1. **リポジトリのクローン**: 
    ```bash
    git clone https://github.com/yourusername/FlickFusion.git
-   ```
+依存関係のインストール:
 
-2. **依存関係のインストール**: 
-   ```bash
-   cd FlickFusion
-   npm install
-   ```
+ 
+cd FlickFusion
+npm install
+ローカルサーバーの起動:
 
-3. **ローカルサーバーの起動**: 
-   ```bash
-   npm run start
-   ```
+ 
+npm run start
+ライセンス
+FlickFusionはMITライセンスのもとで配布されています。詳細なライセンス情報は、
+LICENSE
+ファイルを参照してください。
 
-## ライセンス
-
-FlickFusionはMITライセンスのもとで配布されています。詳細なライセンス情報は、[LICENSE](LICENSE)ファイルを参照してください。
-
-## コントリビュート
-
+コントリビュート
 私たちは、FlickFusionへのコントリビューションを歓迎します。バグ報告や機能提案は、GitHubの「Issues」セクションから行えます。また、プルリクエストも大歓迎です！
 
-## お問い合わせ
-
+お問い合わせ
 FlickFusionに関する質問やサポートが必要な場合は、以下までご連絡ください。
 
 web: https://document.es-1197.info/word/
-
----
 
 このREADMEは、FlickFusion使用時に役立つ情報を網羅しております。YouTubeを新しい形で楽しむために、ぜひFlickFusionをご利用ください！
