@@ -74,6 +74,9 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.2s;
             overflow: hidden;
+            width: calc(30% - 20px);
+            height: calc(30%);
+            aspect-ratio: 1.618 / 1;
         }
 
         .video-card:hover {
@@ -112,10 +115,10 @@
             text-decoration: underline;
         }
 
+        /* Adjusted Sizes for Video Cards */
         .video-card {
             width: calc(30% - 20px);
-            height: calc(30%);
-            aspect-ratio: 1.618 / 1;
+            height: auto; /* Height will adjust automatically */
         }
 
         @media (max-width: 768px) {
@@ -279,3 +282,4 @@
 </body>
 
 </html>
+
