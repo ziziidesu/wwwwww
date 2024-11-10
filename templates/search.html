@@ -20,7 +20,7 @@
             background-color: #f9f9f9;
             margin: 0;
             display: flex;
-            flex-direction: row; /* 横に並ぶように変更 */
+            flex-direction: row;
         }
 
         #sidebar {
@@ -36,11 +36,11 @@
             justify-content: center;
             padding: 10px;
             background-color: #333;
-            position: relative; /* 位置を調整 */
-            z-index: 10; /* 他の要素に重なるようにする */
-            width: 100%; /* 幅を100%に設定 */
-            position: absolute; /* 確保するためにabsoluteにする */
-            top: 0; /* 上部に固定 */
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            position: absolute;
+            top: 0;
         }
 
         .searchbar input[type="search"] {
@@ -51,7 +51,7 @@
             font-size: 18px;
             background-color: #555;
             color: white;
-            margin: 10px 0; /* 上下のマージンを追加 */
+            margin: 10px 0;
         }
 
         .searchbar input[type="search"]::placeholder {
@@ -60,10 +60,10 @@
 
         .pure-g {
             max-width: 1200px;
-            margin: 60px auto; /* スペースを作るためになぜ60pxのマージンを追加 */
+            margin: 60px auto;
             flex-grow: 1;
-            display: flex; /* 横並びになるようにflexを適用 */
-            flex-wrap: wrap; /* ラップする */
+            display: flex;
+            flex-wrap: wrap;
         }
 
         .video-card {
@@ -129,16 +129,16 @@
             }
         }
 
-        /* Popup overlay styles */
-        .overlay {
+        /* Overlay Styles */
+        #overlay {
             display: none; /* Initially hidden */
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(0, 0, 0, 0.7);
-            z-index: 9999;
+            z-index: 100;
             justify-content: center;
             align-items: center;
         }
@@ -147,7 +147,6 @@
             background: white;
             padding: 20px;
             border-radius: 5px;
-            text-align: center;
         }
     </style>
 </head>
@@ -156,19 +155,19 @@
     <div id="sidebar">
         <h2>メニュー</h2>
         <ul>
-            <li><a href="javascript:void(0)" class="menu-item" data-type="home">ホーム</a></li>
-            <li><a href="#" class="menu-item">ショート</a></li>
-            <li><a href="#" class="menu-item">登録チャンネル</a></li>
-            <li><a href="#" class="menu-item">履歴</a></li>
-            <li><a href="#" class="menu-item">プレイリスト</a></li>
-            <li><a href="#" class="menu-item">後で見る</a></li>
-            <li><a href="#" class="menu-item">お気に入り動画</a></li>
-            <li><a href="#" class="menu-item">トレンド</a></li>
-            <li><a href="#" class="menu-item">音楽</a></li>
-            <li><a href="#" class="menu-item">映画 & TV</a></li>
-            <li><a href="#" class="menu-item">ライブ</a></li>
-            <li><a href="#" class="menu-item help">設定</a></li>
-            <li><a href="#" class="menu-item help">ヘルプ</a></li>
+            <li><a href="#" onclick="redirectHome()">ホーム</a></li>
+            <li><a href="#" onclick="showErrorOverlay()">ショート</a></li>
+            <li><a href="#" onclick="showErrorOverlay()">登録チャンネル</a></li>
+            <li><a href="#" onclick="showErrorOverlay()">履歴</a></li>
+            <li><a href="#" onclick="showErrorOverlay()">プレイリスト</a></li>
+            <li><a href="#" onclick="showErrorOverlay()">後で見る</a></li>
+            <li><a href="#" onclick="showErrorOverlay()">お気に入り動画</a></li>
+            <li><a href="#" onclick="showErrorOverlay()">トレンド</a></li>
+            <li><a href="#" onclick="showErrorOverlay()">音楽</a></li>
+            <li><a href="#" onclick="showErrorOverlay()">映画 & TV</a></li>
+            <li><a href="#" onclick="showErrorOverlay()">ライブ</a></li>
+            <li><a href="#" onclick="showErrorOverlay()">設定</a></li>
+            <li><a href="#" onclick="showHelpOverlay()">ヘルプ</a></li>
         </ul>
     </div>
 
@@ -211,7 +210,8 @@
                         </a>
                         {% endif %}
                     </div>
-                </div>{% endfor %}
+                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -220,142 +220,33 @@
         <a href="{{next}}">次のページ</a>
     </div>
 
-    <div class="overlay" id="overlay">
-        <div class="overlay-content" id="overlay-content">
-            <!-- Popup content will be injected here -->
+    <div id="overlay">
+        <div class="overlay-content">
+            <p id="overlay-message"></p>
+            <button onclick="closeOverlay()">閉じる</button>
         </div>
     </div>
 
     <script>
-        // Popup overlay functionality
-        function showOverlay(message) {
-            $("#overlay-content").html(message);
-            $("#overlay").css("display", "flex");
+        function redirectHome() {
+            const word = "word"; // "word"の部分は必要に応じて変更
+            const host = window.location.origin;
+            window.location.href = host + '/' + word;
         }
 
-        $(".menu-item").click(function () {
-            var type = $(this).data('type');
-            if (type === 'home') {
-                window.location.href = window.location.origin + "/word"; // Redirect to home
-            } else if ($(this).hasClass('help')) {
-                showOverlay("# FlickFusionヘルプガイド
+        function showErrorOverlay() {
+            document.getElementById("overlay-message").innerText = "読み込みの途中でエラーが発生しました";
+            document.getElementById("overlay").style.display = "flex"; // オーバーレイを表示
+        }
 
-## はじめに
+        function showHelpOverlay() {
+            document.getElementById("overlay-message").innerText = "ヘルプ";
+            document.getElementById("overlay").style.display = "flex"; // オーバーレイを表示
+        }
 
-FlickFusionは、YouTubeの代替プラットフォームであり、ユーザーが動画を視聴するためのプライバシー重視の方法を提供します。このガイドでは、FlickFusionの一般的な機能、使い方、トラブルシューティングに関する情報を詳しく解説します。
-
-## 目次
-
-1. FlickFusionの概要
-2. アカウントの作成とログイン
-3. 動画の検索と視聴
-4. プレイリストの作成
-5. ユーザーインターフェースの説明
-6. よくある質問（FAQ）
-7. トラブルシューティング
-8. 追加リソース
-
----
-
-## 1. FlickFusionの概要
-
-FlickFusionは、YouTubeの公式サービスに依存せず、ユーザーが動画コンテンツを視聴できるオープンソースのインターフェースです。プライバシーや広告のない閲覧を重視し、ユーザーにより良い体験を提供します。
-
-### 主な機能
-- プライバシー保護: ユーザーデータは収集されず、動画視聴履歴も追跡されません。
-- 広告なし: 動画を快適に視聴できるように、広告が表示されません。
-- カスタマイズ可能: インターフェースのテーマやその他の設定をユーザーが変更可能です。
-
-## 2. アカウントの作成とログイン
-
-FlickFusionは基本的にアカウントを必要としないため、ログインや登録は簡単です。ただし、特定の機能はアカウントが必要となる場合があります（例えば、ブックマークやプレイリストの保存等）。
-
-### アカウント作成手順
-1. FlickFusionのウェブサイトにアクセスします。
-2. 「登録」や「新規アカウント作成」のリンクをクリックします（必要な場合）。
-3. 必要な情報を入力し、登録を完了させてください。
-
-### ログイン手順
-1. FlickFusionのウェブサイトにアクセスします。
-2. 「ログイン」ボタンをクリックします（必要な場合）。
-3. ユーザー名とパスワードを入力してログインします。
-
-## 3. 動画の検索と視聴
-
-FlickFusionでは、簡単に動画を検索することができます。
-
-### 動画の検索方法
-1. ウェブサイトのトップページにある検索バーを利用します。
-2. 見たい動画のタイトルやキーワードを入力し、検索ボタンをクリックします。
-3. 検索結果から視聴したい動画を選択します。
-
-### 動画の視聴
-- 動画は自動的にプレイヤーで再生されます。
-- プレイヤー内では、再生、一時停止、音量調整、全画面表示などのオプションを利用できます。
-
-## 4. プレイリストの作成
-
-プレイリストを作成することで、お気に入りの動画をまとめて管理できます。
-
-### プレイリストの作成手順
-1. 動画を視聴中に「プレイリストに追加」のオプションを選択します。
-2. 新しいプレイリストを作成するか、既存のプレイリストに追加します。
-3. プレイリストの名前を設定し、必要に応じて説明を追加します。
-
-### プレイリストの管理
-- 作成したプレイリストは、マイページからアクセスできます。
-- プレイリストに動画を追加したり、削除したりすることが可能です。
-
-## 5. ユーザーインターフェースの説明
-
-FlickFusionのインターフェースは直感的に操作できるように設計されています。
-
-### メインメニュー
-- **ホーム**: 人気の動画やトレンドを表示。
-- **検索**: 動画を検索するためのバー。
-- **マイページ**: 自分のプレイリストやお気に入りにアクセス。
-
-### プレイヤーの機能
-- 再生ボタン、音量調整、全画面モード、設定（画質調整など）があります。
-
-## 6. よくある質問（FAQ）
-
-### Q: FlickFusionは無料ですか？
-A: はい、FlickFusionは完全に無料で利用できます。
-
-### Q: FlickFusionはどのデバイスで使えますか？
-A: デスクトップ、スマートフォン、タブレットなど、インターネットブラウザがあればほぼ全てのデバイスで使用可能です。
-
-### Q: FlickFusionで動画をダウンロードできますか？
-A: 現在のところ、FlickFusionでは動画のダウンロード機能は提供されていません。
-
-## 7. トラブルシューティング
-
-### 動画が再生できない
-- **原因**: 備えられたサーバーの問題か、一時的な不具合。
-- **対処法**: ページをリフレッシュするか、別のサーバーを試してください。
-
-### ログインできない
-- **原因**: パスワードの入力ミスや、アカウントが存在しない。
-- **対処法**: パスワードを再確認し、必要に応じてパスワードリセットを行ってください。
-
-## 8. 追加リソース
-
-- [FlickFusion GitHubリポジトリ](https://github.com/iv-org/invidious): ソースコードや開発情報
-- [FlickFusionフォーラムやコミュニティ]: ユーザー同士の情報交換のための場所
-
----
-
-このガイドがFlickFusionを利用する際の参考になれば幸いです。質問や不明点があれば、コミュニティフォーラムで他のユーザーに尋ねるか、GitHubで問題を報告してください。");
-            } else {
-                showOverlay("読み込みの途中でエラーが発生しました。");
-            }
-        });
-
-        // Close overlay when clicked
-        $("#overlay").click(function () {
-            $(this).hide();
-        });
+        function closeOverlay() {
+            document.getElementById("overlay").style.display = "none"; // オーバーレイを非表示
+        }
 
         $('#searchbox').autocomplete({
             source: function (request, response) {
