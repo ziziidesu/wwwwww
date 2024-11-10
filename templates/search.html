@@ -96,22 +96,10 @@
             justify-content: space-between;
             padding: 10px;
         }
-      
+
         .pagination {
             text-align: right;
             padding: 10px;
-        }
-
-        .pagination a {
-            background-color: #008CBA; /* ホバー時の色 */
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px; /* 角を丸める */
-            text-decoration: none;
-        }
-
-        .pagination a:hover {
-            background-color: #005f80; /* ホバー時の色 */
         }
 
         a {
@@ -160,6 +148,13 @@
             padding: 20px;
             border-radius: 5px;
         }
+
+        /* Styling for pagination link in menu */
+        .pagination-link {
+            margin-top: 20px;
+            display: block;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -180,6 +175,7 @@
             <li><a href="#" onclick="showErrorOverlay()">ライブ</a></li>
             <li><a href="#" onclick="showErrorOverlay()">設定</a></li>
             <li><a href="#" onclick="showHelpOverlay()">ヘルプ</a></li>
+            <li class="pagination-link"><a href="{{next}}">次のページ</a></li>
         </ul>
     </div>
 
@@ -226,10 +222,6 @@
                 {% endfor %}
             </div>
         </div>
-    </div>
-
-    <div class="pagination">
-        <a href="{{next}}">次のページ</a>
     </div>
 
     <div id="overlay">
