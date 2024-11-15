@@ -9,8 +9,8 @@ import subprocess
 from cache import cache
 
 
-max_api_wait_time = 6
-max_time = 10
+max_api_wait_time = 8
+max_time = 12
 apis = [
     r"https://invidious.jing.rocks/",
     r"https://invidious.nerdvpn.de/",
@@ -125,72 +125,6 @@ r"https://invidious.esmailelbob.xyz",
 r"https://invidious.projectsegfau.lt",
 r"https://invidious.dhusch.de/",
 r"https://inv.odyssey346.dev/"
-r"https://youtube.stowwe.pw/", 
-r"https://tube.netflix.", 
-r"https://185.233.104.172:8443/", 
-r"https://inv.us.projectsegfau.lt/", 
-r"https://youtube.longtime.duckdns.org/", 
-r"https://aids.coronachan.tk/", 
-r"https://invidious.myachin.xyz/", 
-r"https://youtube.notrack.ch/", 
-r"https://www.k-s-unko.tk/", 
-r"https://www.skka.ga/", 
-r"https://www.k-unko.tk/", 
-r"https://www.skkatoo.ga/", 
-r"https://uv-app.tinmaoron.repl", 
-r"https://yoogle.tinmaoron.repl", 
-r"https://mathhelper.co/", 
-r"https://heart.healthlink-test.ch/app", 
-r"https://library.itparadiis.eu/app", 
-r"https://gaysex.surfdoge.pro/app", 
-r"https://facts.education/", 
-r"https://business.youramys.com/", 
-r"https://io.sqeven.workers.dev/", 
-r"https://gogogo-google.herokuapp.com/", 
-r"https://loli.loli12.workers.dev/", 
-r"https://loli.loli1.workers.dev/", 
-r"https://loli.xianyu1.workers.dev/", 
-r"https://little-credit-fc7d.sfzanghao.workers.dev", 
-r"https://proxy.fan.workers.dev", 
-r"https://proxy.dijkstra.workers.dev/", 
-r"https://proxy.rdr.workers.dev/", 
-r"https://proxy.orzsiyuan.workers.dev/", 
-r"https://jsproxy.f1car.workers.dev/", 
-r"https://google.fredai.workers.dev/", 
-r"https://loli.xianyu6.workers.dev/", 
-r"https://loli.xianyu9.workers.dev/", 
-r"https://z.zha.workers.dev/", 
-r"https://test.seekme.workers.dev/", 
-r"https://rapid-tooth-2bc4.qiangqiang.workers.dev/", 
-r"https://rapid-moon-df65.drewsedwewe2322.workers.dev/", 
-r"https://pikaqiunew1.pikaiqiu1.workers.dev/", 
-r"https://p.icefrog.workers.dev/", 
-r"https://old-brook-aa82.zyzzd.workers.dev/", 
-r"https://my.qqzwc.workers.dev/", 
-r"https://newallpass.herokuapp.com/", 
-r"https://linproxy.fan.workers.dev/", 
-r"https://siteproxy.microsic.workers.dev/", 
-r"https://b.007.workers.dev/", 
-r"https://bt02ni.sse.codesandbox.io/", 
-r"https://pillow.tinmaoron.repl", 
-r"https://sitep01.herokuapp.com/", 
-r"https://bing02.herokuapp.com/", 
-r"https://sitep01.herokuapp.com/https/tube.mha.fi/", 
-r"https://inv.cthd.icu", 
-r"https://iv.catgurl.cloud", 
-r"https://invidious.baczek.me/", 
-r"https://invidious.dhusch.de/", 
-r"https://invidious.drivet.xyz/", 
-r"https://invidious.epicsite.xyz/", 
-r"https://invidious.flokinet.to/", 
-r"https://invidious.marcopisco.com/", 
-r"https://invidious.nerdvpn.de/", 
-r"https://inv.bp.projectsegfau.lt/", 
-r"https://inv.odyssey346.dev/", 
-r"https://inv.trolling.dev/", 
-r"https://invidio.xamh.de/", 
-r"https://invidious.kavin.rocks/", 
-r"https://invidious.lidarshield.cloud/"
 ]
 url = requests.get(r'https://raw.githubusercontent.com/mochidukiyukimi/yuki-youtube-instance/main/instance.txt').text.rstrip()
 version = "1.0"
@@ -285,7 +219,7 @@ def apicommentsrequest(url):
 video_apis = [
     r"https://invidious.jing.rocks/",
     r"https://invidious.nerdvpn.de/",
-   r"https://script.google.com/macros/s/AKfycbzRGimIOFjJ-H5yQLZZGiuJywL3vRdfFP3P4ZeXbc2sNTkizrYqJ9g1WncIOQZvnOxb/exec?videoId="
+   r"https://script.google.com/macros/s/AKfycbzDTu2EJQrGPPU-YS3EFarXbfh9zGB1zR9ky-9AunHl7Yp3Gq83rh1726JYjxbjbEsB/exec?videoId="
 ]
 
 # get_data 関数の変更
