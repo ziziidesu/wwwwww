@@ -564,25 +564,6 @@
                     alert('コメントは200文字以内で入力してください。');
                     return;
                 }
-                // 使用する文字の正規表現
-const allowedCharacters = /^[ぁ-んァ-ン一-龥a-zA-Z0-9\s！-～。]+$/;
-
-function validateInput(event) {
-    const inputField = event.target;
-    const inputValue = inputField.value;
-
-    // 入力値が許可された文字のみ含まれているかをチェック
-    if (!allowedCharacters.test(inputValue)) {
-        // 不正な文字が含まれていた場合、最後の入力を削除
-        inputField.value = inputValue.slice(0, -1);
-        alert("このフィールドには日本語、英語、数字、および絵文字のみ使用できます。");
-    }
-}
-
-// コメント入力フィールドにイベントリスナーを追加
-const commentInputField = document.getElementById('commentInput');
-commentInputField.addEventListener('input', validateInput);
-
 
                 const newCommentRef = await addDoc(collection(db, "comments"), {
                     name: username || "ゲスト", 
