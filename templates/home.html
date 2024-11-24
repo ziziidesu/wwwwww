@@ -110,34 +110,9 @@
 
 <body>
 
-<div id="version-container">
-    <span id="version">v2.5.1</span>
-</div>
+
 
 <script>
-    const versionContainer = document.getElementById("version-container");
-    const versionElement = document.getElementById("version");
-    const currentVersion = "v2.5.1";
-
-    fetch('https://raw.githubusercontent.com/siawaseok3/slim-2-by-siawaseok/refs/heads/main/version.txt')
-        .then(response => response.text())
-        .then(remoteVersion => {
-            remoteVersion = remoteVersion.trim();
-
-            if (currentVersion === remoteVersion) {
-                versionElement.style.backgroundColor = "green";
-            } else {
-                versionElement.style.backgroundColor = "red";
-            }
-
-            versionElement.textContent = `${currentVersion} (最新: ${remoteVersion})`;
-        })
-        .catch(error => {
-            console.error('Error fetching version:', error);
-            versionElement.style.backgroundColor = "gray";
-            versionElement.textContent = `${currentVersion} (エラー: 再取得中)`;
-        });
-
     // 浮遊物の生成
     function createBubbles() {
         const bubbleCount = 20; // 浮遊物の数
