@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: math
+    name: yuki777-ro9
     env: python
     region: Oregon
     plan: free
